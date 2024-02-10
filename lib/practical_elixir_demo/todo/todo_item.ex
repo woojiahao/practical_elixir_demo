@@ -1,3 +1,3 @@
 defmodule PracticalElixirDemo.Todo.TodoItem do
-  defstruct [:title, :description, is_done?: false]
+  defstruct [:title, description: nil, is_done?: false]
 end
