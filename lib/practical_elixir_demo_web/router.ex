@@ -21,9 +21,11 @@ defmodule PracticalElixirDemoWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", PracticalElixirDemoWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", PracticalElixirDemoWeb do
+    pipe_through :api
+
+    get "/todo", TodoController, :get_todo_list
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:practical_elixir_demo, :dev_routes) do
