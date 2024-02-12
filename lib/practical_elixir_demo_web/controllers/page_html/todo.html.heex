@@ -1,0 +1,9 @@
+<div>
+  <h1>Todo List</h1>
+  <%= for item <- @todo_list do %>
+    <.todo_item item={item} />
+  <% end %>
+  <p>
+    <%= 5 + 5 %>
+  </p>
+</div>

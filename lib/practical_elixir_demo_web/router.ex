@@ -18,6 +18,7 @@ defmodule PracticalElixirDemoWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/todo", PageController, :todo
   end
 
   # Other scopes may use custom stacks.
