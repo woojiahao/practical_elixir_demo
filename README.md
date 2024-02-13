@@ -13,10 +13,10 @@ There are four key branches for this repository:
 1. `main`: contains the code for base Phoenix
 2. `liveview-base`: contains the code for migrating from base Phoenix to Phoenix LiveView without
    any further additions
-3. `liveview` (this branch): contains the completed code for Phoenix LiveView (including creating
+3. `liveview`: contains the completed code for Phoenix LiveView (including creating
    to-dos and marking to-dos as done/not done)
-4. `complete`: contains the fully completed code with Phoenix LiveView and data persistence with
-   SQLite3
+4. `complete` (this branch): contains the fully completed code with Phoenix LiveView and data
+   persistence with SQLite3
 
 Pull from each branch to get the latest code using:
 
