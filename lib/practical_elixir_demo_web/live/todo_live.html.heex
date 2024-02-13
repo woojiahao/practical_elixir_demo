@@ -1,6 +1,11 @@
 <div class="w-[40%] mx-auto my-8">
   <h1 class="font-bold text-3xl my-8 py-4 px-4 bg-slate-100">Todo List</h1>
-  <input type="text" placeholder="New task" class="rounded-md w-full mb-8" />
+  <form phx-submit="add-todo" class="flex justify-between items-center mb-8">
+    <input type="text" placeholder="New task" name="task-name" class="rounded-md w-full" />
+    <button type="submit" class="px-4 py-2 bg-green-100 rounded-md ml-2">
+      Add
+    </button>
+  </form>
   <%= for item <- @todo_list do %>
     <.todo_item item={item} />
   <% end %>

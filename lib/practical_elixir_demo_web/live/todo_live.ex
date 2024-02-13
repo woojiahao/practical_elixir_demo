@@ -1,10 +1,20 @@
 defmodule PracticalElixirDemoWeb.TodoLive do
+  alias PracticalElixirDemo.Todo.TodoItem
   alias PracticalElixirDemo.Todo
   use PracticalElixirDemoWeb, :live_view
 
   def mount(_params, _session, socket) do
     socket = assign(socket, todo_list: Todo.get_items())
     {:ok, socket, layout: false}
+  end
+
+  def handle_event(
+        "add-todo",
+        %{"task-name" => task_name},
+        %Phoenix.LiveView.Socket{assigns: %{todo_list: todo_list}} = socket
+      ) do
+    new_todo_list = [%TodoItem{title: task_name}] ++ todo_list
+    {:noreply, assign(socket, todo_list: new_todo_list)}
   end
 
   def todo_item(assigns) do
@@ -23,10 +33,12 @@ defmodule PracticalElixirDemoWeb.TodoLive do
 
           <div>
             <%= if @item.is_done? do %>
-              <button class="bg-blue-300 px-3 py-1 font-bold rounded-md text-sm">Mark as Done</button>
+              <button class="bg-blue-300 px-3 py-1 font-bold rounded-md text-sm">
+                Mark as Not Done
+              </button>
             <% else %>
               <button class="bg-green-300 px-3 py-1 font-bold rounded-md text-sm">
-                Mark as Not Done
+                Mark as Done
               </button>
             <% end %>
             <button class="bg-yellow-300 px-3 py-1 font-bold rounded-md text-sm">Edit</button>
