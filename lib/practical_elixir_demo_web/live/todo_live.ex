@@ -17,6 +17,44 @@ defmodule PracticalElixirDemoWeb.TodoLive do
     {:noreply, assign(socket, todo_list: new_todo_list)}
   end
 
+  def handle_event(
+        "mark-not-done",
+        %{"id" => task_id},
+        %Phoenix.LiveView.Socket{assigns: %{todo_list: todo_list}} = socket
+      ) do
+    updated_todo_list =
+      todo_list
+      |> Enum.with_index()
+      |> Enum.map(fn {todo, id} ->
+        if String.to_integer(task_id) == id do
+          Map.update(todo, :is_done?, false, fn _ -> false end)
+        else
+          todo
+        end
+      end)
+
+    {:noreply, assign(socket, todo_list: updated_todo_list)}
+  end
+
+  def handle_event(
+        "mark-done",
+        %{"id" => task_id},
+        %Phoenix.LiveView.Socket{assigns: %{todo_list: todo_list}} = socket
+      ) do
+    updated_todo_list =
+      todo_list
+      |> Enum.with_index()
+      |> Enum.map(fn {todo, id} ->
+        if String.to_integer(task_id) == id do
+          Map.update(todo, :is_done?, true, fn _ -> true end)
+        else
+          todo
+        end
+      end)
+
+    {:noreply, assign(socket, todo_list: updated_todo_list)}
+  end
+
   def todo_item(assigns) do
     ~H"""
     <div class="flex gap-x-4 mb-4 last:mb-0 items-center">
@@ -33,11 +71,21 @@ defmodule PracticalElixirDemoWeb.TodoLive do
 
           <div>
             <%= if @item.is_done? do %>
-              <button class="bg-blue-300 px-3 py-1 font-bold rounded-md text-sm">
+              <button
+                class="bg-blue-300 px-3 py-1 font-bold rounded-md text-sm"
+                type="button"
+                phx-value-id={@id}
+                phx-click="mark-not-done"
+              >
                 Mark as Not Done
               </button>
             <% else %>
-              <button class="bg-green-300 px-3 py-1 font-bold rounded-md text-sm">
+              <button
+                class="bg-green-300 px-3 py-1 font-bold rounded-md text-sm"
+                type="button"
+                phx-value-id={@id}
+                phx-click="mark-done"
+              >
                 Mark as Done
               </button>
             <% end %>
