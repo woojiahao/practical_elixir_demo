@@ -5,17 +5,21 @@ defmodule PracticalElixirDemoWeb.PageHTML do
 
   def todo_item(assigns) do
     ~H"""
-    <%= if @item.is_done? do %>
-      <p>✅</p>
-    <% else %>
-      <p>❌</p>
-    <% end %>
-    <p>
-      <%= @item.title %>
-    </p>
-    <p>
-      <%= @item.description %>
-    </p>
+    <div class="flex gap-x-4 mb-4 last:mb-0">
+      <%= if @item.is_done? do %>
+        <p>✅</p>
+      <% else %>
+        <p>❌</p>
+      <% end %>
+      <div>
+        <p>
+          <%= @item.title %>
+        </p>
+        <p class="italic">
+          <%= @item.description %>
+        </p>
+      </div>
+    </div>
     """
   end
 end
