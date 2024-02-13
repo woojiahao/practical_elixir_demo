@@ -10,9 +10,9 @@ NUS Hackers' Hackerschool. The accompanying guide is found at:
 
 There are four key branches for this repository:
 
-1. `main` (this branch): contains the code for base Phoenix
-2. `liveview-base`: contains the code for migrating from base Phoenix to Phoenix LiveView without
-   any further additions
+1. `main`: contains the code for base Phoenix
+2. `liveview-base` (this branch): contains the code for migrating from base Phoenix to Phoenix
+   LiveView without any further additions
 3. `liveview`: contains the completed code for Phoenix LiveView (including creating to-dos and
    marking to-dos as done/not done)
 4. `complete`: contains the fully completed code with Phoenix LiveView and data persistence with
