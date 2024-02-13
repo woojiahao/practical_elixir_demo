@@ -1,4 +1,31 @@
-# PracticalElixirDemo
+# Practical Elixir Demo
+
+## What is this?
+
+This is the demo repository for the talk: "Practical Functional Programming" that I gave during
+NUS Hackers' Hackerschool. The accompanying guide is found at:
+[[https://practical-elixir.woojiahao.com]]
+
+## Navigating this repository
+
+There are four key branches for this repository:
+
+1. `main` (this branch): contains the code for base Phoenix
+2. `liveview-base`: contains the code for migrating from base Phoenix to Phoenix LiveView without
+   any further additions
+3. `liveview`: contains the completed code for Phoenix LiveView (including creating to-dos and
+   marking to-dos as done/not done)
+4. `complete`: contains the fully completed code with Phoenix LiveView and data persistence with
+   SQLite3
+
+Pull from each branch to get the latest code using:
+
+```
+git fetch
+git switch main/liveview-base/liveview/complete
+```
+
+## Getting started
 
 To start your Phoenix server:
 
